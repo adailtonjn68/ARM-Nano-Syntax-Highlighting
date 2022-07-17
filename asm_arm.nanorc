@@ -1,0 +1,32 @@
+syntax asm "\.(S|s|asm|arm|inc)$"
+magic "assembler source"
+comment "@"
+
+color red "\<[A-Z_]{2,}\>"
+color brightgreen "\.(data|subsection|text)"
+color green "\.(align|file|globl|global|hidden|section|size|type|weak)"
+color brightyellow "\.(ascii|asciz|byte|double|float|hword|int|long|short|single|struct|word)"
+color brightred "^[[:space:]]*[.0-9A-Za-z_]*:"
+#color brightcyan "^[[:space:]]*#[[:space:]]*(define|undef|include|ifn?def|endif|elif|else|if|warning|error)"
+
+
+color brightgreen "\.(equ|include)"
+color brightyellow "\<(ldr|LDR|str|STR)\>"
+color brightyellow "\<(orr|ORR|and|AND)\>"
+color brightyellow "\<(subs|SUBS)\>"
+color brightyellow "\<(b|B|bne|BNE)\>"
+color brightcyan "\<r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15)\>"
+color brightcyan "\<R(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15)\>"
+
+# Strings.
+color brightyellow "<[^= 	]*>" ""(\\.|[^"])*""
+# Multiline strings.  This regex is VERY resource intensive,
+# and sometimes colours things that shouldn't be coloured.
+###color brightyellow start=""(\\.|[^"])*\\[[:space:]]*$" end="^(\\.|[^"])*""
+
+# Comments.
+color brightblue "@.*"
+color brightblue start="/\*" end="\*/"
+
+# Trailing whitespace.
+color ,green "[[:space:]]+$"
