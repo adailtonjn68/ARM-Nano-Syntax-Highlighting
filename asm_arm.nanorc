@@ -12,12 +12,13 @@ color brightred "^[[:space:]]*[.0-9A-Za-z_]*:"
 ################################################################################
 ############## DEFINITIONS FOR ARM ASSEMBLY (THUMB INCLUDED) ###################
 ################################################################################
-color green "\.(syntax|cpu|fpu|macro|endm|set)"
+color green "\.(syntax|cpu|fpu|macro|endm|set|thumb)"
 color brightgreen "\.(equ|include)"
 # Instructions
 color brightyellow "\<(ldr|LDR|str|STR)\>"
 color brightyellow "\<(orr|ORR|and|AND)\>"
-color brightyellow "\<(add|adds|ADD|ADDS|subs|SUBS)\>"
+color brightyellow "\<(add|adds|ADD|ADDS|sub|SUB|subs|SUBS)\>"
+color brightyellow "\<(push|PUSH|pop|POP)\>"
 color brightyellow "\<(b|B|bne|BNE|bcc|BCC)\>"
 
 # Registers
@@ -36,4 +37,4 @@ color brightblue "@.*"
 color brightblue start="/\*" end="\*/"
 
 # Trailing whitespace.
-color ,green "[[:space:]]+$"
+#color ,green "[[:space:]]+$"
